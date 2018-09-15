@@ -1,0 +1,25 @@
+{
+    "manifest_version": 2,
+    "name": "",
+    "version": "1.0",
+    "description": "",
+    "applications": {
+        "gecko": {
+            "id": ""
+        }
+    },
+    "icons": {
+        "48": "icons/icon-48.png",
+        "96": "icons/icon-96.png"
+    },
+    "permissions": [
+    ],
+    "options_ui": {
+        "page": "",
+        "browser_style": true
+    },
+    "browser_action": {
+        "browser_style": true,
+        "default_popup": ""
+    }
+}
