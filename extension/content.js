@@ -5,8 +5,8 @@ function main(oldButtons = [], oldAxes = []) {
     let gamepad = navigator.getGamepads()[0];
     let buttons = gamepad.buttons.map(item => item.pressed);
     let axes = gamepad.axes.map(item => Math.round(item));
-    test_b.innerText = JSON.stringify(buttons);
-    test_a.innerText = JSON.stringify(axes);
+    // test_b.innerText = JSON.stringify(buttons);
+    // test_a.innerText = JSON.stringify(axes);
     sendEvent(buttons, oldButtons, "button");
     sendEvent(axes, oldAxes, "axis");
     requestAnimationFrame(main.bind(null, buttons, axes));
@@ -45,16 +45,24 @@ function createEvent(target, eventType, detail) {
 function event(e) {
     console.log(e.detail);
     if (e.detail.pressed) {
-        let key = new KeyboardEvent("keydown", {
-            key: e.button,
-            repeat: true
-        });
-        window.dispatchEvent(key);
+        let event = new Event("keydown");
+        event.key = " ";
+        event.keyCode = " ".charCodeAt(0);
+        event.which = event.keycode;
+        // let key = new KeyboardEvent("keydown", {
+        //     // key: e.detail.button,
+        //     key: "a",
+        //     code: "a".charCodeAt(0),
+        //     repeat: true
+        // });
+        document.dispatchEvent(event);
     } else {
         let key = new KeyboardEvent("keyup", {
-            key: e.button
+            // key: e.detail.button
+            key: " ",
+            code: " ".charCodeAt(0)
         });
-        window.dispatchEvent(key);
+        document.dispatchEvent(key);
     }
 }
 
@@ -69,4 +77,4 @@ function keypress(e) {
 document.addEventListener("gamepadpressed", event);
 document.addEventListener("gamepadaxis", axisEvent);
 window.addEventListener("gamepadconnected", main);
-window.addEventListener("keydown", keypress);
+document.addEventListener("keydown", keypress);
