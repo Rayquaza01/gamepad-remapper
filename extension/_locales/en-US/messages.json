@@ -1,0 +1,10 @@
+{
+    "extensionName": {
+        "message": "Gamepad Remapper",
+        "description": "Gamepad Remapper"
+    },
+    "extensionDescription": {
+        "message": "Map gamepad buttons to keyboard buttons",
+        "description": "extension description"
+    }
+}
