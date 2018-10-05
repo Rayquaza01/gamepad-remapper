@@ -1,10 +1,11 @@
-const test_b = document.getElementById("test");
-const test_a = document.getElementById("test_a")
+// const test_b = document.getElementById("test");
+// const test_a = document.getElementById("test_a")
 
+console.log("Gamepad Remapper Running")
 function main(oldButtons = [], oldAxes = []) {
     let gamepad = navigator.getGamepads()[0];
     let buttons = gamepad.buttons.map(item => item.pressed);
-    let axes = gamepad.axes.map(Math.round);
+    let axes = gamepad.axes.map(item => Math.round(item));
     // test_b.innerText = JSON.stringify(buttons);
     // test_a.innerText = JSON.stringify(axes);
     sendEvent(buttons, oldButtons, "button");
@@ -44,27 +45,22 @@ function createEvent(target, eventType, detail) {
 
 function event(e) {
     console.log(e.detail);
+    console.log(e.detail.pressed)
     if (e.detail.pressed) {
-        let event = new Event("keypress");
+        console.log("SEND KEYPRESS")
+        let event = new Event("keydown");
         event.key = " ";
         event.keyCode = " ".charCodeAt(0);
-        event.which = event.keyCode;
+        event.which = event.keycode;
         event.bubbles = true;
         event.repeat = true;
-        // let key = new KeyboardEvent("keydown", {
-        //     // key: e.detail.button,
-        //     key: "a",
-        //     code: "a".charCodeAt(0),
-        //     repeat: true
-        // });
+        console.log(document.activeElement)
         document.activeElement.dispatchEvent(event);
     } else {
         let key = new KeyboardEvent("keyup", {
-            // key: e.detail.button
-            key: " ",
-            code: " ".charCodeAt(0)
+            key: " "
         });
-        document.dispatchEvent(key);
+        document.activeElement.dispatchEvent(key);
     }
 }
 
@@ -72,11 +68,6 @@ function axisEvent(e) {
     console.log(e.detail);
 }
 
-function keypress(e) {
-    console.log(e.key);
-}
-
 document.addEventListener("gamepadpressed", event);
 document.addEventListener("gamepadaxis", axisEvent);
 window.addEventListener("gamepadconnected", main);
-document.addEventListener("keypress", keypress);

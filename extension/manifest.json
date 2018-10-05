@@ -1,11 +1,11 @@
 {
     "manifest_version": 2,
-    "name": "",
+    "name": "Gamepad Remapper",
     "version": "1.0",
-    "description": "",
+    "description": "Remaps gamepad",
     "applications": {
         "gecko": {
-            "id": ""
+            "id": "gamepad-remapper@r01"
         }
     },
     "icons": {
@@ -13,13 +13,21 @@
         "96": "icons/icon-96.png"
     },
     "permissions": [
+        "<all_urls>"
     ],
     "options_ui": {
-        "page": "",
+        "page": "options.html",
         "browser_style": true
     },
     "browser_action": {
         "browser_style": true,
-        "default_popup": ""
-    }
+        "default_popup": "popup.html"
+    }, 
+    "content_scripts": [
+        {
+            "matches": ["https://tetris.com/play-tetris/"],
+            "js": ["content.js"]
+        }
+    ],
+    "default_locale": "en-US"
 }
