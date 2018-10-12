@@ -1,0 +1,4 @@
+pyautogui
+pyobjc-core; sys_platform == "darwin"
+pyobjc; sys_platform == "darwin"
+python3-xlib; sys_platform == "linux"

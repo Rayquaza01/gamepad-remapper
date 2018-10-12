@@ -1,0 +1,7 @@
+{
+    "name": "gamepad_remapper",
+    "description": "Remap gamepad buttons to keyboard keys",
+    "path": "gamepad-remapper.py",
+    "type": "stdio",
+    "allowed_extensions": ["gamepad-remapper@r01"]
+}

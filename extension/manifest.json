@@ -13,7 +13,9 @@
         "96": "icons/icon-96.png"
     },
     "permissions": [
-        "<all_urls>"
+        "<all_urls>",
+        "nativeMessaging",
+        "storage"
     ],
     "options_ui": {
         "page": "options.html",
