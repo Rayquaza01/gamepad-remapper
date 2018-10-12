@@ -1,7 +1,8 @@
 {
-    "name": "gamepad_remapper",
+    "name": "gamepadremapper.r01",
     "description": "Remap gamepad buttons to keyboard keys",
     "path": "gamepad-remapper.py",
     "type": "stdio",
-    "allowed_extensions": ["gamepad-remapper@r01"]
+    "allowed_extensions": ["gamepad-remapper@r01"],
+    "allowed_origins": ["chrome-extension://cnliphefjlimlljpandbpgcefhbaphdd/"]
 }

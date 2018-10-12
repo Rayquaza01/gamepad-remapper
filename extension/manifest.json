@@ -24,12 +24,11 @@
     "browser_action": {
         "browser_style": true,
         "default_popup": "popup.html"
-    }, 
+    },
     "content_scripts": [
         {
             "matches": ["https://tetris.com/play-tetris/"],
             "js": ["content.js"]
         }
-    ],
-    "default_locale": "en-US"
+    ]
 }

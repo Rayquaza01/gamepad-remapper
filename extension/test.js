@@ -1,5 +1,5 @@
-var port = browser.runtime.connectNative("gamepad_remapper");
 const text = document.getElementById("text");
+var port = browser.runtime.connectNative("gamepadremapper.r01");
 
 // function onResponse(response) {
 //     console.log(response);
@@ -12,7 +12,7 @@ const text = document.getElementById("text");
 async function main() {
     text.focus();
     port.postMessage(["a", "b", "c", "left", "d"]);
-    // browser.runtime.sendNativeMessage("gamepad_remapper", ["a", "b", "c", "left", "d"]).then(onResponse, onError);
+    // browser.runtime.sendNativeMessage("gamepadremapper.r01", ["a", "b", "c", "left", "d"]).then(onResponse, onError);
 }
 
 document.getElementById("button").addEventListener("click", main);
