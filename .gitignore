@@ -2,3 +2,6 @@
 *.swo
 Thumbs.db
 *.exe
+app/*_firefox.json
+app/*_chrome.json
+app/*.bat

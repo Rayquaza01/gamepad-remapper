@@ -1,3 +1,4 @@
+nativemessaging
 pyautogui
 pyobjc-core; sys_platform == "darwin"
 pyobjc; sys_platform == "darwin"
