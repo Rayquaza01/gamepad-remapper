@@ -1,7 +1,7 @@
 // const test_b = document.getElementById("test");
-// const test_a = document.getElementById("test_a")
+// const test_a = document.getElementById("test_a");
 
-console.log("Gamepad Remapper Running")
+console.log("Gamepad Remapper Running");
 function main(oldButtons = [], oldAxes = []) {
     let gamepad = navigator.getGamepads()[0];
     let buttons = gamepad.buttons.map(item => item.pressed);
@@ -14,26 +14,23 @@ function main(oldButtons = [], oldAxes = []) {
 }
 
 function sendEvent(current, old, type) {
-    for (let i = 0; i < current.length; i++) {
-        if (old.hasOwnProperty(i) && current.hasOwnProperty(i)) {
-            if (current[i] !== old[i]) {
-                switch (type) {
-                    case "button":
-                        createEvent(document, "gamepadpressed", {
-                            button: i,
-                            pressed: current[i]
-                        });
-                        break;
-                    case "axis":
-                        createEvent(document, "gamepadaxis", {
-                            axis: i,
-                            value: current[i]
-                        });
-                        break;
-                }
-            }
+    current.filter((item, index) => item !== old[index]).forEach((item, index) => {
+        console.log(type);
+        switch (type) {
+            case "button":
+                createEvent(document, "gamepadpressed", {
+                    button: index,
+                    pressed: current[index]
+                });
+                break;
+            case "axis":
+                createEvent(document, "gamepadaxis", {
+                    axis: index,
+                    value: current[index]
+                });
+                break;
         }
-    }
+    });
 }
 
 function createEvent(target, eventType, detail) {
@@ -45,22 +42,12 @@ function createEvent(target, eventType, detail) {
 
 function event(e) {
     console.log(e.detail);
-    console.log(e.detail.pressed)
+    console.log(e.detail.pressed);
+    browser.runtime.sendMessage({
+        type: "typeString",
+        string: " ".split("")
+    });
     if (e.detail.pressed) {
-        console.log("SEND KEYPRESS")
-        let event = new Event("keydown");
-        event.key = " ";
-        event.keyCode = " ".charCodeAt(0);
-        event.which = event.keycode;
-        event.bubbles = true;
-        event.repeat = true;
-        console.log(document.activeElement)
-        document.activeElement.dispatchEvent(event);
-    } else {
-        let key = new KeyboardEvent("keyup", {
-            key: " "
-        });
-        document.activeElement.dispatchEvent(key);
     }
 }
 
