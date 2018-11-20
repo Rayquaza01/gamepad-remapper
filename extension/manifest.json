@@ -21,7 +21,9 @@
         "browser_style": true,
         "default_popup": "popup.html"
     },
-    "background": ["bg.js"],
+    "background": {
+        "scripts": ["bg.js"]
+    },
     "content_scripts": [
         {
             "matches": ["https://tetris.com/play-tetris/"],
