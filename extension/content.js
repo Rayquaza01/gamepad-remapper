@@ -2,6 +2,7 @@
 // const test_a = document.getElementById("test_a");
 
 console.log("Gamepad Remapper Running");
+
 function main(oldButtons = [], oldAxes = []) {
     let gamepad = navigator.getGamepads()[0];
     let buttons = gamepad.buttons.map(item => item.pressed);
@@ -14,23 +15,25 @@ function main(oldButtons = [], oldAxes = []) {
 }
 
 function sendEvent(current, old, type) {
-    current.filter((item, index) => item !== old[index]).forEach((item, index) => {
-        console.log(type);
-        switch (type) {
-            case "button":
-                createEvent(document, "gamepadpressed", {
-                    button: index,
-                    pressed: current[index]
-                });
-                break;
-            case "axis":
-                createEvent(document, "gamepadaxis", {
-                    axis: index,
-                    value: current[index]
-                });
-                break;
-        }
-    });
+    current
+        .filter((item, index) => item !== old[index])
+        .forEach((item, index) => {
+            console.log(type);
+            switch (type) {
+                case "button":
+                    createEvent(document, "gamepadpressed", {
+                        button: index,
+                        pressed: current[index]
+                    });
+                    break;
+                case "axis":
+                    createEvent(document, "gamepadaxis", {
+                        axis: index,
+                        value: current[index]
+                    });
+                    break;
+            }
+        });
 }
 
 function createEvent(target, eventType, detail) {
@@ -48,6 +51,7 @@ function event(e) {
         string: " ".split("")
     });
     if (e.detail.pressed) {
+        console.log(e.detail.pressed);
     }
 }
 

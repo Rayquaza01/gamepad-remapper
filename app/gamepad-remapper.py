@@ -1,22 +1,22 @@
-#!/usr/bin/env python3 -u
-import nativemessaging
+#!/usr/bin/python3 -u
+import nativemessaging as nm
 import pyautogui
 
 
 if __name__ == "__main__":
     while True:
-        message = nativemessaging.get_message()
+        message = nm.get_message()
         if type(message) is dict:
             if message["type"] == "typeString":
                 pyautogui.typewrite(message["string"])
-                nativemessaging.send_message(nativemessaging.encode_message({
+                nm.send_message(nm.encode_message({
                     "response": "OK"
                 }))
             else:
-                nativemessaging.send_message(nativemessaging.encode_message({
+                nm.send_message(nm.encode_message({
                     "response": "INVALID"
                 }))
         else:
-            nativemessaging.send_message(nativemessaging.encode_message({
+            nm.send_message(nm.encode_message({
                 "response": "INVALID"
             }))
