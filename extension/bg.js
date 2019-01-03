@@ -5,4 +5,4 @@ function sendMessage(message) {
     });
 }
 
-browser.runtime.onMessageRecived(sendMessage);
+browser.runtime.onMessage.addListener(sendMessage);
