@@ -3,15 +3,23 @@
 
 console.log("Gamepad Remapper Running");
 
-function main(oldButtons = [], oldAxes = []) {
+async function main() {
+    requestAnimationFrame(main);
     let gamepad = navigator.getGamepads()[0];
-    let buttons = gamepad.buttons.map(item => item.pressed);
+    gamepad.buttons.forEach(item => {
+        if (item.pressed) {
+            browser.runtime.sendMessage({
+                type: "typeString",
+                string: [" "]
+            });
+        }
+    });
+    let buttons;
     let axes = gamepad.axes.map(item => Math.round(item));
     // test_b.innerText = JSON.stringify(buttons);
     // test_a.innerText = JSON.stringify(axes);
-    sendEvent(buttons, oldButtons, "button");
-    sendEvent(axes, oldAxes, "axis");
-    requestAnimationFrame(main.bind(null, buttons, axes));
+    // sendEvent(buttons, oldButtons, "button");
+    // sendEvent(axes, oldAxes, "axis");
 }
 
 function sendEvent(current, old, type) {
