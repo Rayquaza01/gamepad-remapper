@@ -1,24 +1,16 @@
 const text = document.getElementById("text");
 var port = browser.runtime.connectNative("gamepadremapper.r01");
 
-// function onResponse(response) {
-//     console.log(response);
-// }
-
-// function onError(error) {
-//     console.log(error);
-// }
-
-async function main() {
-    text.focus();
-    port.postMessage({
-        type: "typeString",
-        string: ["a", "b", "c", "left", "d"]
-    });
-    // browser.runtime.sendNativeMessage("gamepadremapper.r01", ["a", "b", "c", "left", "d"]).then(onResponse, onError);
+function start() {
+    port.postMessage({"start": true, "stop": false, "config": "test"})
 }
 
-document.getElementById("button").addEventListener("click", main);
+function stop() {
+    port.postMessage({"start": false, "stop": true, "config": "test"})
+}
+
+document.getElementById("button").addEventListener("click", start);
+document.getElementById("button2").addEventListener("click", stop)
 port.onMessage.addListener(res => {
     console.log(res);
 });
