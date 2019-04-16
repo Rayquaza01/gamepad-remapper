@@ -4,20 +4,10 @@ import pyautogui
 import json
 import urllib.parse
 import sys
-import math
 
 
 dirs = {"neg": -1, "pos": 1}
 axes = {"x": 0, "y": 1}
-
-
-def posOrNeg(num):
-    if num > 0:
-        return 1
-    elif num < 0:
-        return -1
-    elif num == 0:
-        return 0
 
 
 def main():
