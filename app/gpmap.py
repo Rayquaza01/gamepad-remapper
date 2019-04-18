@@ -1,53 +1,21 @@
 #!/usr/bin/env python3
-import pygame
 import pyautogui
-import json
-import urllib.parse
-import sys
-
+# prevent pygame from breaking web-ext
+import os
+os.environ["PYGAME_HIDE_SUPPORT_PROMPT"] = ""
+import pygame
 
 dirs = {"neg": -1, "pos": 1}
 axes = {"x": 0, "y": 1}
 
 
-def main():
-    # map = json.loads(urllib.parse.unquote_plus(sys.argv[1]))
-    map = {
-        "buttons": {
-            "1": ["up", "single"],
-            "0": ["z", "single"],
-            "4": ["c", "single"],
-            "5": ["c", "single"]
-        },
-        "axes": {
-            "0": {
-                "neg": ["left", "repeat"],
-                "pos": ["right", "repeat"]
-            },
-            "1": {
-                "neg": ["space", "single"],
-                "pos": ["down", "repeat"]
-            }
-        },
-        "hats": {
-            "0": {
-                "x": {
-                    "neg": ["left", "repeat"],
-                    "pos": ["right", "repeat"]
-                },
-                "y": {
-                    "pos": ["space", "single"],
-                    "neg": ["down", "repeat"]
-                }
-            }
-        }
-    }
+def main(stop=None, map={"buttons": {}, "axes": {}, "hats": {}}):
     pygame.joystick.init()
     pygame.display.init()
     clock = pygame.time.Clock()
     js = pygame.joystick.Joystick(0)
     js.init()
-    while True:
+    while stop is None or not stop.is_set():
         # use events for single button presses
         for event in pygame.event.get():
             if event.type == pygame.JOYBUTTONDOWN:
