@@ -1,7 +1,9 @@
 #!/usr/bin/python3 -u
 import nativemessaging as nm
+import os
 import threading
 import gpmap
+import subprocess
 
 
 if __name__ == "__main__":
@@ -15,4 +17,7 @@ if __name__ == "__main__":
         elif message["action"] == "stop":
             gvars["kill"].set()
             gvars["t"].join()
+        elif message["action"] == "tester":
+            with open(os.devnull, "w") as fp:
+                subprocess.Popen("./test.py", stdout=fp)
         nm.send_message(nm.encode_message("OK"))
