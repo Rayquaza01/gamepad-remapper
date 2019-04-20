@@ -12,7 +12,7 @@
         "48": "icons/icon-48.png",
         "96": "icons/icon-96.png"
     },
-    "permissions": ["<all_urls>", "nativeMessaging", "storage"],
+    "permissions": ["tabs", "notifications", "nativeMessaging", "storage"],
     "options_ui": {
         "page": "options.html",
         "browser_style": true
@@ -22,13 +22,7 @@
         "default_popup": "popup.html"
     },
     "background": {
-        "scripts": ["bg.js"]
+        "scripts": ["js-yaml.min.js", "bg.js"]
     },
-    "content_scripts": [
-        {
-            "matches": ["https://tetris.com/play-tetris/"],
-            "js": ["content.js"]
-        }
-    ],
     "default_locale": "en-US"
 }

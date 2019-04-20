@@ -1,0 +1,41 @@
+---
+default:
+  match: .*
+  buttons:
+    0:
+      - z
+      - single
+    1:
+      - x
+      - single
+  axes:
+    0:
+       neg:
+         - left
+         - repeat
+       pos:
+         - right
+         - repeat
+    1:
+      pos:
+        - down
+        - repeat
+      neg:
+        - up
+        - repeat
+  hats:
+    0:
+      x:
+        neg:
+          - left
+          - repeat
+        pos:
+          - right
+          - repeat
+      y:
+        neg:
+          - down
+          - repeat
+        pos:
+          - up
+          - repeat
