@@ -1,15 +1,33 @@
 ---
-default:
-  match: .*
+- name: Default
+  # match is an optional property that will allow you to associate
+  # a config with a website. It is a regex that needs to match the current URL.
   buttons:
     0:
+      # mappings are a list of a button and how to handle that button (single or repeat)
+      # the button may be a single key, or a special key
+      # single means 1:1 presses, repeat will keep pressing the key
+      # as you hold down the controller button
       - z
       - single
     1:
       - x
       - single
+    4:
+      # if you pass a list to the first option, all of the items will be pressed together
+      # useful for shortcuts that involve more than one key like Ctrl+Tab
+      - - ctrl
+        - shift
+        - tab
+      - single
+    5:
+      - - ctrl
+        - tab
+      - single
+        
   axes:
     0:
+       # axes have negative and positive components.
        neg:
          - left
          - repeat
@@ -25,6 +43,7 @@ default:
         - repeat
   hats:
     0:
+      # hats have x and y components, along with negative and positive components
       x:
         neg:
           - left

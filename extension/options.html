@@ -8,12 +8,23 @@
     <body>
         <table>
             <tr>
+                <td>Options (YAML)</td>
+                <td>Options (JSON) (READ ONLY)</td>
+            <tr>
                 <td class="tacont"><textarea id="options_yaml"></textarea></td>
-                <td class="tacont"><textarea id="options_json" disabled></textarea></td>
+                <td class="tacont"><textarea id="options_json" readonly></textarea></td>
             </tr>
         </table>
         <button id="save">Save</button>
         <button id="open">Open Gamepad Tester</button>
+        <select id="change_with_tabs">
+            <option value="true">Change Mode With Tabs</option>
+            <option value="false">Do Not Change Mode With Tabs</option>
+        </select>
+        <select id="notifications">
+            <option value="true">Show Notifications</option>
+            <option value="false">Do Not Show Notifications</option>
+        </select>
         <script src="js-yaml.min.js"></script>
         <script src="options.js"></script>
     </body>

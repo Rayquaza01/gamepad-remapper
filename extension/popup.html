@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" type="text/css" href="popup.css">
         <meta charset="utf-8">
     </head>
     <body>
-        <button id="start">Start</button>
-        <button id="stop">Stop</button>
+        <ul id="modes"></ul>
+        <button id="start" disabled>Start</button>
+        <button id="stop" disabled>Stop</button>
+        <button id="settings">Settings</button>
+        <script src="findActive.js"></script>
         <script src="popup.js"></script>
     </body>
 </html>

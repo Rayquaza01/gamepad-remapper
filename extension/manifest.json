@@ -15,14 +15,15 @@
     "permissions": ["tabs", "notifications", "nativeMessaging", "storage"],
     "options_ui": {
         "page": "options.html",
-        "browser_style": true
+        "browser_style": true,
+        "open_in_tab": true
     },
     "browser_action": {
         "browser_style": true,
         "default_popup": "popup.html"
     },
     "background": {
-        "scripts": ["js-yaml.min.js", "bg.js"]
+        "scripts": ["js-yaml.min.js", "findActive.js", "bg.js"]
     },
     "default_locale": "en-US"
 }
