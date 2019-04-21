@@ -34,13 +34,14 @@ The config file can be edited from within the browser. It is written in YAML, bu
         - left
         - repeat
   hats:
-    x:
-      pos:
-        - right
-        - repeat
-      neg:
-        - left
-        - repeat
+    0:
+      x:
+        pos:
+          - right
+          - repeat
+        neg:
+          - left
+          - repeat
 ```
 The top level needs to be an array of objects. The objects need to have a `name` parameter, and a `match` parameter that can regex match a URL. There needs to be an object with the name `Default`, and it does not need to have a match property. It will be used as the fallback if no other URLs match.
 
