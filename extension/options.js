@@ -9,6 +9,7 @@ function launchTester() {
 }
 
 function tabSpace(e) {
+    // tab in textarea types 2 spaces instead of selecting next element
     // from https://stackoverflow.com/questions/6637341/use-tab-to-indent-in-textarea/14166052#14166052
     if (e.key === "Tab") {
         e.preventDefault();
@@ -23,6 +24,7 @@ function tabSpace(e) {
 
 async function load() {
     let res = await browser.storage.local.get();
+    // load options into page
     options_yaml.value = res.options_yaml;
     options_json.value = JSON.stringify(jsyaml.safeLoad(res.options_yaml), null, 4);
     opt_notifications.value = JSON.stringify(res.notifications);
@@ -33,6 +35,7 @@ async function save() {
     let sample = await (await fetch(
         browser.extension.getURL("sample_config.yaml")
     )).text();
+    // save yaml data as yaml and json, falling back to sample
     options_json.value = JSON.stringify(jsyaml.safeLoad(options_yaml.value), null, 4);
     browser.storage.local.set({
         options_yaml: options_yaml.value || sample,
@@ -50,6 +53,7 @@ opt_change_with_tabs.addEventListener("change", () =>
     })
 );
 
+// event listeners
 options_yaml.addEventListener("keydown", tabSpace);
 document.getElementById("save").addEventListener("click", save);
 document.getElementById("open").addEventListener("click", launchTester);
