@@ -42,7 +42,6 @@ async function onMessage(message) {
     if (typeof message === "object") {
         let res = await browser.storage.local.get();
         // store message from native app
-        browser.storage.local.set(message);
         if (res.notifications) {
             // create notification with state and mode info if enabled
             browser.notifications.create({
@@ -51,6 +50,7 @@ async function onMessage(message) {
                 message: "Current mode is " + message.mode
             });
         }
+        browser.storage.local.set(message);
     }
 }
 

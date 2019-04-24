@@ -36,8 +36,11 @@ def mapping(stop=None, map={}):
     pygame.display.init()
     clock = pygame.time.Clock()
     # init joystick
-    js = pygame.joystick.Joystick(0)
-    js.init()
+    try:
+        js = pygame.joystick.Joystick(0)
+        js.init()
+    except pygame.error:
+        stop.wait()
     # while extension hasn't send stop message
     while stop is None or not stop.is_set():
         # use events for single button presses
