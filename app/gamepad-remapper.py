@@ -121,8 +121,10 @@ if __name__ == "__main__":
             with open(file, "r") as f:
                 map = json.loads(f.read())
         # print configs, choose which to use
+        keys = []
         for key in map:
-            print(key)
+            keys.append(key["name"])
+            print("  " + key["name"])
         config = input("Choose your config: ")
         # start mapping
-        mapping(None, map[config])
+        mapping(None, map[keys.index(config)])
