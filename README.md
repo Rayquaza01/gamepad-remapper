@@ -71,3 +71,9 @@ The `Settings` button will open the options page.
 
 # As A Standalone Program
 You can use `gamepad-remapper.py` as a standalone program. Just save the JSON config from the browser to a file, open `gamepad-remapper.py`, and give it the config. It will ask you to type in the name of the config you want to use, and will start mapping after you enter the name.
+
+# Adknowledgements
+ - Using icon from [Material Design Icons](https://materialdesignicons.com)
+ - Using [PyAutoGUI](https://pypi.org/project/PyAutoGUI/)
+ - Using [pygame](https://pypi.org/project/pygame/)
+ - Using [js-yaml](https://github.com/nodeca/js-yaml)
